@@ -1,0 +1,22 @@
+{
+    "mongo": {
+        "host": "127.0.0.1",
+        "port": 27017,
+        "rport": 27023,
+        "cosmetics4udb": "cosmetics4udb",
+        "keepAlive": true
+    },
+    "api": {
+        "secret": "cosmetcis4u app secret",
+        "bindAddress": "localhost",
+        "bindPort": 8000,
+        "publicAccessUrl": "http://localhost:8000"
+
+    }
+
+
+
+
+
+
+}
