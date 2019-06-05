@@ -1,3 +1,38 @@
-<p>
-  Login Works!
-</p>
+<mat-toolbar color="primary">
+  <a class="filler" color="primary" routerLink="" routerLinkActive="active">Login</a>
+  <a class="gap" color="primary" routerLink="/signup" routerLinkActive="active">Sign Up</a>
+</mat-toolbar>
+
+<form [formGroup]="loginForm" >
+  
+  <div class="form-container" style="padding-top:10px">
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="emailControl" [(ngModel)]="user.email">
+      <mat-error *ngIf= "loginForm.controls.emailControl.hasError('required')">
+        Email is <strong>required.</strong>
+      </mat-error>
+      <mat-error *ngIf= "loginForm.controls.emailControl.hasError('email')">
+        Please enter a <strong>valid</strong> email address.
+      </mat-error>
+
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Password" type="password" formControlName="passwordControl" [(ngModel)]="user.password">
+      <mat-error *ngIf= "loginForm.controls.passwordControl.hasError('required')">
+        Password is <strong>required.</strong>
+      </mat-error>
+      
+
+    </mat-form-field>
+
+    <br/>
+
+    <div>
+      <button class="form-button" mat-raised-button (click)="onLoginclick()" (disabled)="!loginForm.valid">LOGIN</button>
+    </div>
+    
+  
+  </div>
+
+
+</form>

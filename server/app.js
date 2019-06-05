@@ -18,6 +18,10 @@ app.use(bodyParser.urlencoded({limit: '100mb', extended:true}));
 
 app.use(cookieParser());
 
+//Routes
+var authRoute = require('./routes/authRoute');
+app.use('/v1/cosmetics4u/api/auth', authRoute);
+
 
 app.use(function(req, res, next){
     var err = new Error('Not found');
