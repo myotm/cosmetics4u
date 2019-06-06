@@ -20,7 +20,9 @@ app.use(cookieParser());
 
 //Routes
 var authRoute = require('./routes/authRoute');
+var userRoute = require('./routes/userRoute');
 app.use('/v1/cosmetics4u/api/auth', authRoute);
+app.use('/v1/cosmetics4u/api/user', userRoute);
 
 
 app.use(function(req, res, next){

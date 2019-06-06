@@ -1,3 +1,93 @@
-<p>
-  signup works!
-</p>
+<mat-toolbar color="primary">
+  <a class="filler" color="primary" routerLink="" routerLinkActive="active">Login</a>
+  <a class="gap" color="primary" routerLink="/signup" routerLinkActive="active">Sign Up</a>
+  <a class= "filler" color="primary" routerLink="/uploadpage" routerLinkActive="active">Admin Upload Page</a>
+  <a class="filler" color="primary" routerLink="/homepage" routerLinkActive="active">Home Page</a>
+</mat-toolbar>
+
+<h1> Signup Page </h1>
+
+<form [formGroup]="signupForm">
+
+  <div class="form-container" style="padding-top:10px">
+    <!-- Email -->
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="emailControl" [(ngModel)]="user.email">
+      <mat-error *ngIf="signupForm.controls.emailControl.hasError('required')">
+        Email is <strong>required.</strong>
+      </mat-error>
+      <mat-error *ngIf="signupForm.controls.emailControl.hasError('email')">
+        Please enter a valid Email Address.
+      </mat-error>
+    </mat-form-field>
+    <!-- Password and Retype Password -->
+    <mat-form-field>
+      <input id="input_Password" matInput placeholder="Password" type="password"  formControlName="passwordControl" [(ngModel)]="user.password">
+      <mat-error *ngIf="signupForm.controls.passwordControl.hasError('required')">
+        Password is required.
+      </mat-error>
+      <mat-error *ngIf="signupForm.controls.passwordControl.hasError('validatePasswordStrength')">
+        Must have a minimum of 6 characters!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input id="input_retypePwd"  matInput placeholder="Retype Password" type="password"  formControlName="retypePasswordControl">
+      <mat-error *ngIf="signupForm.controls.retypePasswordControl.hasError('required')">
+        Password is required.
+      </mat-error>
+      <mat-error *ngIf="signupForm.controls.retypePasswordControl.hasError('validatePasswordMatch')">
+        Not matching passwords.
+      </mat-error>
+    </mat-form-field>
+    <!-- Full Name -->
+    <mat-form-field>
+      <input matInput placeholder="Full Name" formControlName="fullNameControl" [(ngModel)]="user.fullName" appearance="legacy">
+      <mat-error *ngIf="signupForm.controls.fullNameControl.hasError('required')">
+        Full-Name is required.
+      </mat-error>
+    </mat-form-field>
+    <!-- Gender -->
+    <mat-form-field>
+      <input matInput placeholder="Gender" formControlName="genderControl" [(ngModel)]="user.gender">
+      <mat-error *ngIf="signupForm.controls.genderControl.hasError('required')">
+        Gender is required.
+      </mat-error>
+    </mat-form-field>
+    <!-- DOB -->
+    <mat-form-field>
+      <input matInput [matDatepicker]="DOB" placeholder="Date of Birth" formControlName="dobControl" [(ngModel)]="user.dob">
+      <mat-datepicker-toggle matSuffix [for]="DOB"></mat-datepicker-toggle>
+      <mat-datepicker #DOB></mat-datepicker>
+      <mat-error *ngIf="signupForm.controls.dobControl.hasError('required')">
+        Date of birth is required.
+      </mat-error>
+      <mat-error *ngIf="signupForm.controls.dobControl.hasError('validateDOB')">
+        Date must be before today.
+      </mat-error>
+    </mat-form-field>
+    <!-- Gender  -->
+    <mat-form-field>
+      <input matInput placeholder="Gender" formControlName="genderControl" [(ngModel)]="user.gender">
+      <mat-error *ngIf="signupForm.controls.genderControl.hasError('required')">
+        Gender is required.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- PhoneNo -->
+    <mat-form-field>
+      <input matInput placeholder="PhoneNO" formControlName="phoneControl" [(ngModel)]="user.PhoneNo">
+      <mat-error *ngIf="signupForm.controls.phoneControl.hasError('required')">
+        Phone is required.
+      </mat-error>
+      <mat-error *ngIf="signupForm.controls.phoneControl.hasError('validatePhone')">
+        Put phone number.
+      </mat-error>
+    </mat-form-field>
+
+
+  </div>
+  <div>
+    <button class="form-button" mat-raised-button (click)="onSignupClick()" [disabled]="!signupForm.valid">SIGN UP</button>
+  </div>
+
+</form>

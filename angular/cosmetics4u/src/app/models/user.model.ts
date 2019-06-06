@@ -8,8 +8,9 @@ export class User implements Auth{
     public password: string;
     public fullName: string;
     public dob: string;
-    public country: string;
-    public city: string;
+    public gender: string;
+    public phoneNo: number;
+    public userRole: string;
 }
 
 export class Product {

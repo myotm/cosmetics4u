@@ -1,0 +1,15 @@
+{
+  "name": "cdn",
+  "version": "1.0.0",
+  "description": "upload server for cosmetics4u",
+  "main": "upload.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "myoTm",
+  "license": "ISC"
+}
