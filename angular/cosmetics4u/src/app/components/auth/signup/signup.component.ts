@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 import { User, Auth } from '../../../models';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
-import { ValidatorService, HttpService, UserApiService, AuthService} from 'src/app/services';
+import { ValidatorService, HttpService, UserApiService, AuthService} from '../../../services';
 import { EventEmitter } from 'events';
 
 @Component({
@@ -43,11 +43,7 @@ export class SignupComponent implements OnInit {
       retypePasswordControl: ['', [Validators.required, (control: FormControl) => {
         return this.validatorService.validatePasswordMatch(control, this.user.password);
       }]],
-      fullNameControl: ['', [Validators.required]],
-      genderControl: ['', [Validators.required]],
-      dobControl: ['', [Validators.required, this.validatorService.validateDOB]],
-      addressControl: ['', [Validators.required]],
-      phoneControl: ['', [Validators.required, this.validatorService.validatePhone]],
+      userRoleControl: ['', [Validators.required]]
       
     });
     this.signupForm.controls.passwordControl.valueChanges.subscribe(() => {
@@ -57,8 +53,10 @@ export class SignupComponent implements OnInit {
   }
 
   public onSignupClick() {
+    console.log("successful loginclick-------");
     this.authService.signup(this.user).subscribe(user => {
       if(user) {
+        console.log('clicked');
         this.signupClick.emit('');
       }
     }, err => {

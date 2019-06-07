@@ -39,11 +39,11 @@ export class ValidatorService {
         };
     }
 
-    public validatePhone(control: FormControl) {
+    public validateNumber(control: FormControl) {
         const isValid = !control || !control.value ? false : !isNumeric(control.value) ? false : true;
 
         return isValid ? null : {
-            validatePhone: {
+            validateNumber: {
                 valid: false
             }
         };

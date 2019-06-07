@@ -6,10 +6,6 @@ export interface Auth {
 export class User implements Auth{
     public email: string;
     public password: string;
-    public fullName: string;
-    public dob: string;
-    public gender: string;
-    public phoneNo: number;
     public userRole: string;
 }
 

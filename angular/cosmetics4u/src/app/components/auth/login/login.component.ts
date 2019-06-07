@@ -6,6 +6,7 @@ import {
 import { User } from '../../../models/user.model';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../../services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -23,15 +24,8 @@ export class LoginComponent implements OnInit {
 
   @Output() toggleAuthClick = new EventEmitter<boolean>();
 
-  constructor( private formBuilder: FormBuilder, private authService: AuthService ) {
-    // this.user= {
-    //   email: '',
-    //   password: '',
-    //   fullName: '',
-    //   dob: '',
-    //   city: '',
-    //   country: ''
-    // };
+  constructor( private formBuilder: FormBuilder, private authService: AuthService, private router : Router) {
+    
     this.user = new User();
    }
 
@@ -51,7 +45,10 @@ export class LoginComponent implements OnInit {
      this.authService.login(this.user.email, this.user.password).subscribe(user => {
        if (user){
          this.user = user;
+         console.log("WELP~~~~");
+         this.router.navigate(['/homepage']);
          this.loginClick.emit();
+         
        }
      }, err => {
        console.log('Error after onLoginClick.');

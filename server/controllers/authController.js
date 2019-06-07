@@ -5,6 +5,7 @@ var authHelper = require('../helpers/auth');
 
 exports.login = (req, res) => {
     var user = req.body;
+    console.log("reached to server/auth/login/authcontroller.js-------------");
 
 
     var dbLogin = (fulfill, reject) => {
@@ -60,3 +61,4 @@ exports.signup = (req, res) => {
         httpHelper.resResult(res, error);
     });
 }
+

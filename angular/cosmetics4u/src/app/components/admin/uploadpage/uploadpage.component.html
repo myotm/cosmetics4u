@@ -5,3 +5,50 @@
     <a class="filler" color="primary" routerLink="/homepage" routerLinkActive="active">Home Page</a>
     
   </mat-toolbar>
+<h1> Admin Upload Page </h1>
+  <form [formGroup]="adminUploadForm">
+      <div class="form-container" style="padding-top:10px">
+
+        <!-- Product ID -->
+        <mat-form-field>
+          <input matInput placeholder="Product ID" formControlName="prodIdControl" [(ngModel)]="product.email">
+          <mat-error *ngIf="adminUploadForm.controls.prodIdControl.hasError('required')">
+            Product ID is <strong>required.</strong>
+          </mat-error>
+        </mat-form-field>
+        <!-- Product Name  -->
+        <mat-form-field>
+          <input matInput placeholder="Product Name" formControlName="prodNameControl" [(ngModel)]="product.name">
+          <mat-error *ngIf="adminUploadForm.controls.prodIdControl.hasError('required')">
+            Product Name is <strong> required.</strong>
+          </mat-error>
+        </mat-form-field>
+        <!-- Product Description -->
+        <mat-form-field>
+          <input matInput placeholder="Product Description" formControlName="prodDescriptionControl" [(ngModel)]="product.description">
+          <mat-error *ngIf="adminUploadForm.controls.prodDescriptionControl.hasError('required')">
+              Product Description is <strong> required.</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Product Price  -->
+        <mat-form-field>
+            <input matInput placeholder="Product Price" formControlName="prodPriceControl" [(ngModel)]="product.price">
+            <mat-error *ngIf="adminUploadForm.controls.prodPriceControl.hasError('required')">
+              Product Price is <strong> required.</strong>
+            </mat-error>
+            <mat-error *ngIf="adminUploadForm.controls.prodPriceControl.hasError('validateNumber')">
+              Please enter numbers only.
+            </mat-error>
+          </mat-form-field>
+      </div>
+
+      <div>
+        <button  class="form-button" mat-raised-button (click)="onUploadClick()" [disabled]="!adminUploadForm.valid" >
+          Upload Product Details
+        </button>
+      </div>
+
+
+
+  </form>

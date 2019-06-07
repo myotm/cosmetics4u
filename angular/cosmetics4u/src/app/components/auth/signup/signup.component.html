@@ -39,51 +39,16 @@
         Not matching passwords.
       </mat-error>
     </mat-form-field>
-    <!-- Full Name -->
-    <mat-form-field>
-      <input matInput placeholder="Full Name" formControlName="fullNameControl" [(ngModel)]="user.fullName" appearance="legacy">
-      <mat-error *ngIf="signupForm.controls.fullNameControl.hasError('required')">
-        Full-Name is required.
-      </mat-error>
-    </mat-form-field>
-    <!-- Gender -->
-    <mat-form-field>
-      <input matInput placeholder="Gender" formControlName="genderControl" [(ngModel)]="user.gender">
-      <mat-error *ngIf="signupForm.controls.genderControl.hasError('required')">
-        Gender is required.
-      </mat-error>
-    </mat-form-field>
-    <!-- DOB -->
-    <mat-form-field>
-      <input matInput [matDatepicker]="DOB" placeholder="Date of Birth" formControlName="dobControl" [(ngModel)]="user.dob">
-      <mat-datepicker-toggle matSuffix [for]="DOB"></mat-datepicker-toggle>
-      <mat-datepicker #DOB></mat-datepicker>
-      <mat-error *ngIf="signupForm.controls.dobControl.hasError('required')">
-        Date of birth is required.
-      </mat-error>
-      <mat-error *ngIf="signupForm.controls.dobControl.hasError('validateDOB')">
-        Date must be before today.
-      </mat-error>
-    </mat-form-field>
-    <!-- Gender  -->
-    <mat-form-field>
-      <input matInput placeholder="Gender" formControlName="genderControl" [(ngModel)]="user.gender">
-      <mat-error *ngIf="signupForm.controls.genderControl.hasError('required')">
-        Gender is required.
-      </mat-error>
-    </mat-form-field>
+    
 
-    <!-- PhoneNo -->
+    <!-- User Role -->
     <mat-form-field>
-      <input matInput placeholder="PhoneNO" formControlName="phoneControl" [(ngModel)]="user.PhoneNo">
-      <mat-error *ngIf="signupForm.controls.phoneControl.hasError('required')">
-        Phone is required.
+      <input matInput placeholder="User Role" formControlName="userRoleControl" [(ngModel)]="user.userRole">
+      <mat-error *ngIf="signupForm.controls.userRoleControl.hasError('required')">
+        User Role is required.
       </mat-error>
-      <mat-error *ngIf="signupForm.controls.phoneControl.hasError('validatePhone')">
-        Put phone number.
-      </mat-error>
-    </mat-form-field>
 
+    </mat-form-field>
 
   </div>
   <div>

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Product, User } from '../../../models/user.model';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { AuthService, ValidatorService, } from '../../../services';
 
 @Component({
   selector: 'app-uploadpage',
@@ -7,9 +10,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadpageComponent implements OnInit {
 
-  constructor() { }
+  @Input() public product: Product;
+
+  @Output() public uploadClick = new EventEmitter();
+  
+  public adminUploadForm : FormGroup;
+
+
+  constructor( private formBuilder : FormBuilder, private validatorService: ValidatorService, 
+    private authService: AuthService) { 
+      this.product = new Product();
+    }
 
   ngOnInit() {
+    this.initUploadForm();
   }
 
+  public initUploadForm(){
+    this.adminUploadForm = this.formBuilder.group({
+      prodIdControl: ['', [Validators.required]],
+      prodNameControl: ['', [Validators.required]],
+      prodDescriptionControl: ['', [Validators.required, this.validatorService.validateNumber]],
+      prodPriceControl: ['', [Validators.required]]
+      
+    })
+
+
+  }
+
+  public onUploadClick(){
+    this.authService.upload(this.product).subscribe(product => {
+      if(product) {
+        this.uploadClick.emit();
+      }
+    }, err => {
+        console.log('Error after signupClick.');
+      });
+  }
 }
