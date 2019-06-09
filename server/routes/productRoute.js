@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var productController = require('../controllers/productController');
 var authHelper = require("../helpers/auth");
+var dbEntityController = require('../controllers/dbEntityController');
+
+var entity = 'productable';
 
 router.post('/create', authHelper.authenticateRequest(), productController.create);
 router.get('/', authHelper.authenticateRequest(), productController.findAll);

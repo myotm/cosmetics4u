@@ -4,7 +4,11 @@
   "description": "upload server for cosmetics4u",
   "main": "upload.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "multer": "^1.4.1",
+    "multiparty": "^4.2.1",
+    "storage": "^0.2.0"
   },
   "devDependencies": {},
   "scripts": {

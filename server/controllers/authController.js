@@ -21,6 +21,7 @@ exports.login = (req, res) => {
                     if(user.password !== foundUser.password){
                         reject("Password is invalid.")
                     }else{
+                        console.log("FOUND USER----", user);
                         fulfill(foundUser);
                     }
                 }

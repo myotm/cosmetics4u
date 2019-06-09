@@ -1,18 +1,6 @@
 var jwt = require('jsonwebtoken');
 var config = require('../config/config.json');
 
-exports.signUser = (email) => {
-    //create  a token which expires in 24h
-    var token = jwt.sign({
-        email: email
-    }, config.api.secret, {
-        expiresIn: "24h"
-    });
-    
-    console.log(`sign user(${email}) - return token (${token})`); // why use ` instead of '?
-    return token;
-}
-
 exports.authenticateRequest = () => {
     return (req, res, next) => {
        var authToken = req.headers.authtoken;

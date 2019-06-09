@@ -44,12 +44,21 @@ export class LoginComponent implements OnInit {
    public onLoginclick(){
      this.authService.login(this.user.email, this.user.password).subscribe(user => {
        if (user){
-         this.user = user;
-         console.log("WELP~~~~");
-         this.router.navigate(['/homepage']);
-         this.loginClick.emit();
+         console.log("reached to loginclick>>>>>>>>>><<<<<<<<<<<<<<<");
+        this.user = user;
+         if (this.user.userRole === "admin"){
+          this.loginClick.emit();
+          this.router.navigate(['/uploadpage']);
+         }
+         else {
+          console.log("User logs in >>>>>>><<<<<<<<<<<<");
+          this.loginClick.emit();
+          this.router.navigate(['/homepage']);
+        }
+         
          
        }
+       else { }
      }, err => {
        console.log('Error after onLoginClick.');
      });
