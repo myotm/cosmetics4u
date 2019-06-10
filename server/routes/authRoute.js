@@ -40,8 +40,10 @@ var signup = async (req, res) => {
     try{
         var user = req.body;
         if (user) {
+            console.log("user:----", user);
             var createdUser = await dbEntityController.create(entity, user);
             user.email = createdUser.email;
+            console.log("createduser-------", createdUser);
             httpHelper.resError(res,user);
         } else {
             httpHelper.resError(res, 'Invalid User Details.');

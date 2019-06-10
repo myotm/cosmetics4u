@@ -34,7 +34,7 @@ export class AuthService {
     public signup(user: User): Observable<any>{
         console.log("auth.service.ts/signup clicked!_------------");
 
-        return this.http.post('/auth/signup', user).pipe(
+        return this.http.post('/user/create', user).pipe(
             map((result: any) => {
                 if(result.status === ServerResponseCodes.SUCCESS){
                     if(result.data){
@@ -49,7 +49,7 @@ export class AuthService {
     }
 
     public upload(product: Product): Observable<any>{
-        return this.http.post('/auth/upload', product).pipe(
+        return this.http.post('/product/create', product).pipe(
             map((result: any) => {
                 if(result.status === ServerResponseCodes.SUCCESS){
                     if(result.data){
@@ -61,4 +61,7 @@ export class AuthService {
             }), catchError(err => Observable.throw(err))
         );
     }
+
+
+    
 }

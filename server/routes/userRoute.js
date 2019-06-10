@@ -95,9 +95,9 @@ var findByRole = async (req, res) => {
 //     }
 // }
 
-router.post('/create', authHelper.authenticateRequest(), create);
+router.post('/create', create);
 router.post('/createAll', authHelper.authenticateRequest(), createAll);
-router.get('/:username', authHelper.authenticateRequest(), find);
+router.get('/find/:username', authHelper.authenticateRequest(), find);
 router.get('/', authHelper.authenticateRequest(), findAll);
 router.get('/role/:role', authHelper.authenticateRequest(), findByRole);
 // router.get('/students/:intake/:module', findStudentsByCriteria)

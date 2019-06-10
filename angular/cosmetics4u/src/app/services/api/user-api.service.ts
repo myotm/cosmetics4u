@@ -18,13 +18,13 @@ export class UserApiService {
 
 
     public updateUser(user: User): Observable<any> {
-        return this.http.put('/users/', user).pipe(map((result: any) => {
+        return this.http.put('/user/update', user).pipe(map((result: any) => {
             return result;
         }), catchError(err => Observable.throw(err)));
     }
 
     public removeUser(username: string): Observable<any> {
-        return this.http.delete('/users/' + encodeURIComponent(username)).pipe(map((result: any)=> {
+        return this.http.delete('/user/remove' + encodeURIComponent(username)).pipe(map((result: any)=> {
             return result;
         }), catchError(err => Observable.throw(err)));
     }
@@ -37,7 +37,7 @@ export class UserApiService {
     }
 
     public getUser(username: string): Observable<any> {
-        return this.http.get('/users/' + encodeURIComponent(username)).pipe(map((result: any) => {
+        return this.http.get('/user/find' + encodeURIComponent(username)).pipe(map((result: any) => {
             const data = result.data;
             return result;
         }), catchError(err => Observable.throw(err)));

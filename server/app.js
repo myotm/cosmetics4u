@@ -39,8 +39,10 @@ app.use(bodyParser.urlencoded({limit: '100mb', extended:true}));
 //Routes
 var authRoute = require('./routes/authRoute');
 var userRoute = require('./routes/userRoute');
+var productRoute = require('./routes/productRoute');
 app.use('/v1/cosmetics4u/api/auth', authRoute);
 app.use('/v1/cosmetics4u/api/user', userRoute);
+app.use('/v1/cosmetics4u/api/product', productRoute);
 
 // http error handlers
 /// catch 404 and forward to error handler

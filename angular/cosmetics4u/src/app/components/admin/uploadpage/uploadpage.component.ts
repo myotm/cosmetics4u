@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product, User } from '../../../models/user.model';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { AuthService, ValidatorService, } from '../../../services';
+import { AuthService, ValidatorService, UserApiService } from '../../../services';
 
 @Component({
   selector: 'app-uploadpage',
@@ -30,12 +30,11 @@ export class UploadpageComponent implements OnInit {
     this.adminUploadForm = this.formBuilder.group({
       prodIdControl: ['', [Validators.required]],
       prodNameControl: ['', [Validators.required]],
-      prodDescriptionControl: ['', [Validators.required, this.validatorService.validateNumber]],
-      prodPriceControl: ['', [Validators.required]]
+      prodTypeControl: ['', [Validators.required]],
+      prodPriceControl: ['', [Validators.required, this.validatorService.validateNumber]],
+      prodImageControl: ['', [Validators.required]]
       
     })
-
-
   }
 
   public onUploadClick(){
@@ -44,7 +43,14 @@ export class UploadpageComponent implements OnInit {
         this.uploadClick.emit();
       }
     }, err => {
-        console.log('Error after signupClick.');
-      });
+        console.log('Error after onUPloadClick.');
+    });
   }
+
+  public onImageUploadClick(){
+    
+
+
+  }
+
 }

@@ -56,7 +56,6 @@ export class SignupComponent implements OnInit {
     console.log("successful loginclick-------");
     this.authService.signup(this.user).subscribe(user => {
       if(user) {
-        
         this.signupClick.emit('');
       }
     }, err => {

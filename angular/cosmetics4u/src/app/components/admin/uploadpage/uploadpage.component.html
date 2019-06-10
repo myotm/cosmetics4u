@@ -11,7 +11,7 @@
 
         <!-- Product ID -->
         <mat-form-field>
-          <input matInput placeholder="Product ID" formControlName="prodIdControl" [(ngModel)]="product.email">
+          <input matInput placeholder="Product ID" formControlName="prodIdControl" [(ngModel)]="product.id">
           <mat-error *ngIf="adminUploadForm.controls.prodIdControl.hasError('required')">
             Product ID is <strong>required.</strong>
           </mat-error>
@@ -23,13 +23,29 @@
             Product Name is <strong> required.</strong>
           </mat-error>
         </mat-form-field>
-        <!-- Product Description -->
+        <!-- Product Image -->
+        <form name="prodImageForm" >
+          <input type="file" id="prodImage" name="images" placeholder="Product Image" >
+          <button class="form-button" mat-raised-button (click)="onImageUploadClick()" >Upload Image</button>
+        </form>
+        <!-- Image URL -->
         <mat-form-field>
-          <input matInput placeholder="Product Description" formControlName="prodDescriptionControl" [(ngModel)]="product.description">
-          <mat-error *ngIf="adminUploadForm.controls.prodDescriptionControl.hasError('required')">
-              Product Description is <strong> required.</strong>
+          <input matInput placeholder="Image URL" disabled="true" formControlName="prodImageControl" [(ngModel)]="product.imageUrl">
+          <mat-error *ngIf="adminUploadForm.controls.prodImageControl.hasError('required')">
+            Product Image Url is required. Please choose file and upload first.
+          </mat-error>
+        </mat-form-field>
+       
+        
+
+        <!-- Product Type -->
+        <mat-form-field>
+          <input matInput placeholder="Product Type" formControlName="prodTypeControl" [(ngModel)]="product.type">
+          <mat-error *ngIf="adminUploadForm.controls.prodTypeControl.hasError('required')">
+              Product Type is <strong> required.</strong>
             </mat-error>
         </mat-form-field>
+
 
         <!-- Product Price  -->
         <mat-form-field>

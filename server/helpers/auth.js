@@ -8,6 +8,7 @@ exports.authenticateRequest = () => {
 
         if (authToken) {
             // verify the token
+            console.log("AUTH TOKEN---------------", authToken);
             jwt.verify(authToken, config.api.secret, (err, decoded) => {
                 if (err) {
                     res.json({ status: 'Invalid Auth Token' });
