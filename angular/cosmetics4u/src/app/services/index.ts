@@ -6,3 +6,5 @@ export { AuthService } from './auth/auth.service';
 export { HttpService } from './api/http.service';
 export { UserApiService } from './api/user-api.service';
 export { ProductApiService } from './api/product-api.service';
+export { StorageService, LocalStorageService } from './api/storage.service';
+export { ShoppingCartService } from './api/shopping-cart.service';

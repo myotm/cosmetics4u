@@ -25,4 +25,10 @@ export class CartItem {
 export class ShoppingCart {
     public items: CartItem[] = new Array<CartItem>();
     public totalItems: number = 0;
+
+
+    public updateFrom(src: ShoppingCart) {
+        this.items = src.items;
+        this.totalItems = src.totalItems;
+      }
 }

@@ -7,17 +7,17 @@ import {  MatInputModule, MatButtonModule, MatFormFieldModule, MatRadioModule,
   MatCardModule, MatGridListModule, MatPaginatorModule, MatBottomSheetModule, 
   MatStepperModule, MatIconModule, MatDividerModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
-import { StorageServiceModule } from 'ngx-webstorage-service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpService } from './services/api/http.service';
-import { UserApiService, AuthService, ValidatorService, ProductApiService } from './services';
+import { UserApiService, AuthService, ValidatorService, ProductApiService, ShoppingCartService, StorageService, LocalStorageService } from './services';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { HomepageComponent } from './components/home/homepage/homepage.component';
 import { UploadpageComponent } from './components/admin/uploadpage/uploadpage.component';
 import { ShoppingcartpageComponent } from './components/home/shoppingcartpage/shoppingcartpage.component';
+import { ShopcartcomponentComponent } from './components/home/shopcartcomponent/shopcartcomponent.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -34,7 +34,8 @@ const appRoutes: Routes = [
     SignupComponent,
     HomepageComponent,
     UploadpageComponent,
-    ShoppingcartpageComponent
+    ShoppingcartpageComponent,
+    ShopcartcomponentComponent
     ],
   imports: [
     BrowserModule,
@@ -62,7 +63,15 @@ const appRoutes: Routes = [
       { enableTracing: true }
     )
   ],
-  providers: [ HttpService, UserApiService, ValidatorService, AuthService, ProductApiService, StorageServiceModule ],
+  providers: [ HttpService, UserApiService, ValidatorService, 
+    AuthService, ProductApiService, ShoppingCartService, 
+    { provide: StorageService, useClass: LocalStorageService  }, 
+    {
+      deps: [StorageService, ProductApiService],
+      provide: ShoppingCartService,
+      useClass: ShoppingCartService
+    } 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
