@@ -34,10 +34,6 @@ exports.init = (config) => {
 }
 
 
-
-
-
-
 exports.connect = (cb) => {
     mongoClient.connect(mongodbUrl, function(err, database){
         if (err) throw err;

@@ -3,6 +3,8 @@ var router = express.Router();
 var authHelper = require("../helpers/auth");
 var dbEntityController = require('../controllers/dbEntityController');
 var httpHelper = require("../helpers/http");
+var cors = require('cors');
+var multiparty = require('multiparty');
 
 
 var multer = require('multer');
@@ -16,7 +18,7 @@ var storage = multer.diskStorage({
 });
 
 var uploadStorage = multer({storage: storage});
-
+// var uploadStorage = multer({ dest: './files/' });
 
 
 
@@ -87,20 +89,25 @@ var findByCategory = async (req, res) => {
 }
 
 var upload = async (req, res, next) => {
-     
+    
     res.status(200).json({
         status: "SUCCESS",
         files: req.files,
         fileCount: req.files.length
     });
-    console.log(req.files);
-
+    console.log("product/upload :", fileCount);
+    
 }
 
+
+
+//authHelper.authenticateRequest()
+
 router.post('/create', create);
-router.get('/', authHelper.authenticateRequest(), findAll);
-router.get('/productname', authHelper.authenticateRequest(), find);
-router.get('/category/:category', authHelper.authenticateRequest(), findByCategory);
-router.get('/upload', uploadStorage.any(), upload);
+router.get('/findall', findAll);
+router.get('/productname', find);
+router.get('/category/:category', findByCategory);
+router.post('/upload', uploadStorage.any(), upload);
+
 
 module.exports = router;

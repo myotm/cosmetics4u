@@ -1,10 +1,10 @@
 <mat-toolbar color="primary">
-    <a class="filler" color="primary" routerLink="" routerLinkActive="active">Login</a>
-    <a class="gap" color="primary" routerLink="/signup" routerLinkActive="active">Sign Up</a>
-    <a class= "filler" color="primary" routerLink="/uploadpage" routerLinkActive="active">Admin Upload Page</a>
-    <a class="filler" color="primary" routerLink="/homepage" routerLinkActive="active">Home Page</a>
-    
-  </mat-toolbar>
+  <a class="filler" color="primary" routerLink="" routerLinkActive="active">Login</a>
+  <a class="gap" color="primary" routerLink="/signup" routerLinkActive="active">Sign Up</a>
+  <a class= "filler" color="primary" routerLink="/uploadpage" routerLinkActive="active">Admin Upload Page</a>
+  <a class="filler" color="primary" routerLink="/homepage" routerLinkActive="active">Home Page</a>
+  <a class="filler" color="primary" routerLink="/shoppingcartpage" routerLinkActive="active">Shopping Cart Page</a>    
+</mat-toolbar>
 <h1> Admin Upload Page </h1>
   <form [formGroup]="adminUploadForm">
       <div class="form-container" style="padding-top:10px">
@@ -24,18 +24,22 @@
           </mat-error>
         </mat-form-field>
         <!-- Product Image -->
-        <form name="prodImageForm" >
-          <input type="file" id="prodImage" name="images" placeholder="Product Image" >
-          <button class="form-button" mat-raised-button (click)="onImageUploadClick()" >Upload Image</button>
+        <form  method="POST" action="/v1/cosmetics4u/api/product/uploadImage" enctype="multipart/form-data" >
+          <!-- <input type="file" id="prodImage" name="images" placeholder="Product Image"> -->
+          <input type="file" id="fileUpload" name="productImage"/>
+        
+          <button>Upload Image</button>
         </form>
         <!-- Image URL -->
         <mat-form-field>
-          <input matInput placeholder="Image URL" disabled="true" formControlName="prodImageControl" [(ngModel)]="product.imageUrl">
-          <mat-error *ngIf="adminUploadForm.controls.prodImageControl.hasError('required')">
+          <input matInput placeholder="Image URL"  formControlName="prodImageUrlControl" [(ngModel)]="product.imageUrl">
+          <mat-error *ngIf="adminUploadForm.controls.prodImageUrlControl.hasError('required')">
             Product Image Url is required. Please choose file and upload first.
           </mat-error>
         </mat-form-field>
-       
+            
+        
+
         
 
         <!-- Product Type -->

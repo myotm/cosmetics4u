@@ -3,25 +3,28 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {  MatInputModule, MatButtonModule, MatFormFieldModule, MatRadioModule, 
-  MatDatepickerModule, MatNativeDateModule, MatMenuModule, MatToolbarModule, MatCardModule } from '@angular/material';
+  MatDatepickerModule, MatNativeDateModule, MatMenuModule, MatToolbarModule, 
+  MatCardModule, MatGridListModule, MatPaginatorModule, MatBottomSheetModule, 
+  MatStepperModule, MatIconModule, MatDividerModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
+import { StorageServiceModule } from 'ngx-webstorage-service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpService } from './services/api/http.service';
-import { UserApiService } from './services/api/user-api.service';
-import { ValidatorService } from './services/validator.service';
-import { AuthService } from './services/auth/auth.service';
+import { UserApiService, AuthService, ValidatorService, ProductApiService } from './services';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { HomepageComponent } from './components/home/homepage/homepage.component';
 import { UploadpageComponent } from './components/admin/uploadpage/uploadpage.component';
+import { ShoppingcartpageComponent } from './components/home/shoppingcartpage/shoppingcartpage.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'uploadpage', component: UploadpageComponent },
-  { path: 'homepage', component: HomepageComponent }
+  { path: 'homepage', component: HomepageComponent },
+  { path: 'shoppingcartpage', component: ShoppingcartpageComponent }
 ];
 
 @NgModule({
@@ -30,8 +33,9 @@ const appRoutes: Routes = [
     LoginComponent,
     SignupComponent,
     HomepageComponent,
-    UploadpageComponent
-  ],
+    UploadpageComponent,
+    ShoppingcartpageComponent
+    ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -46,13 +50,19 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     MatToolbarModule,
     MatCardModule,
+    MatGridListModule,
+    MatPaginatorModule,
+    MatBottomSheetModule,
+    MatStepperModule,
+    MatDividerModule,
+    MatIconModule,
     HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true }
     )
   ],
-  providers: [ HttpService, UserApiService, ValidatorService, AuthService ],
+  providers: [ HttpService, UserApiService, ValidatorService, AuthService, ProductApiService, StorageServiceModule ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

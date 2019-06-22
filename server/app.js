@@ -8,6 +8,9 @@ var config = require('./config/config');
 var helmet = require('helmet');
 var morgan = require('morgan');
 var cors = require('cors');
+var multiparty = require('multiparty');
+var multer = require('multer');
+
 
 
 var request = require('request');
@@ -23,17 +26,15 @@ var logStream = fs.createWriteStream(path.join(__dirname, 'logs'), { flags: 'a' 
 
 app.use(helmet());
 app.use(morgan('dev', { stream: logStream }));
-app.use(bodyParser.json({limit: appConfig.app.http.jsonLimit }));
-app.use(bodyParser.urlencoded({limit: appConfig.app.http.jsonLimit, extended: true}));
-app.use(cookieParser());
+
+// app.use(cookieParser());
 
 
-// app.use(httpHelper.enableCORS);
-// app.use(cors());
-app.use(cors(httpHelper.corsOptions()));
-
+app.use(httpHelper.enableCORS);
 app.use(bodyParser.json({limit: '100mb'}));
 app.use(bodyParser.urlencoded({limit: '100mb', extended:true}));
+app.use(cors());
+
 
 
 //Routes

@@ -17,3 +17,12 @@ export class Product {
     public imageUrl: string;
 }
 
+export class CartItem {
+    public product: Product;
+    public quantity: number = 0;
+}
+
+export class ShoppingCart {
+    public items: CartItem[] = new Array<CartItem>();
+    public totalItems: number = 0;
+}

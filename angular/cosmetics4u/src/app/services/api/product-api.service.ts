@@ -27,26 +27,43 @@ export class ProductApiService {
     }
 
     public getallProducts(): Observable<any> {
-        return this.http.get('/products/').pipe(map((result: any) => {
+        return this.http.get('/product/findall').pipe(map((result: any) => {
             const data = result.data;
             return result;
         }), catchError(err => Observable.throw(err)));
     }
 
     public getProduct(product: string): Observable<any> {
-        return this.http.get('/user/find' + encodeURIComponent(product)).pipe(map((result: any) => {
+        return this.http.get('/product/find' + encodeURIComponent(product)).pipe(map((result: any) => {
             const data = result.data;
+            console.log("DATA~~~~~~~~~~~~~~~~~", data);
+            return data;
+        }), catchError(err => Observable.throw(err)));
+    }
+
+    public uploadImage(file: File): Observable<any>{
+
+        let formData: FormData = new FormData();
+        formData.append('file', file);
+        return this.http.post('/product/upload' , file).pipe(map((result:any)=> {
             return result;
         }), catchError(err => Observable.throw(err)));
     }
 
-    public uploadImage(){
-
-        
+    public getImageUrl(imageURl: string): Observable<any>{
+        return this.http.get('/produt/getImageUrl' + encodeURIComponent(imageURl)).pipe(map((result:any)=>{
+            const data = result.data;
+            return result;
+        }), catchError(err=> Observable.throw(err)));
     }
 
-
-
+    
+    // public uploadImage(file: File): Observable<any> {
+    //     let formData: FormData = new FormData();
+    //     formData.append('file', file);
+    //     return this.apiService.postFile(formData, this.fileBaseUrl + 'uploadImage');
+    //     }
+        
 
 }
 

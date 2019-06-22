@@ -1,38 +1,35 @@
 <mat-toolbar color="primary">
-    <a class="filler" color="primary" routerLink="" routerLinkActive="active">Login</a>
-    <a class="gap" color="primary" routerLink="/signup" routerLinkActive="active">Sign Up</a>
-    <a class= "filler" color="primary" routerLink="/uploadpage" routerLinkActive="active">Admin Upload Page</a>
-    <a class="filler" color="primary" routerLink="/homepage" routerLinkActive="active">Home Page</a>
-    
-  </mat-toolbar>
+  <a class="filler" color="primary" routerLink="" routerLinkActive="active">Login</a>
+  <a class="gap" color="primary" routerLink="/signup" routerLinkActive="active">Sign Up</a>
+  <a class= "filler" color="primary" routerLink="/uploadpage" routerLinkActive="active">Admin Upload Page</a>
+  <a class="filler" color="primary" routerLink="/homepage" routerLinkActive="active">Home Page</a>
+  <a class="filler" color="primary" routerLink="/shoppingcartpage" routerLinkActive="active">Shopping Cart Page</a>
+</mat-toolbar>
 
 
-<form [formGroup]="homePageForm">
+
+
   <div class="form-mdcard-container">
-      <mat-card class="example-card">
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>Shiba Inu</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-          </mat-card-header>
-          <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
-          <mat-card-content>
-            <p>
-              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-              bred for hunting.
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
-          </mat-card-actions>
-        </mat-card>
-
-
+    <mat-grid-list class="grid-list-class" cols="1" rows= "1">
+      <mat-grid-tile >
+          <mat-card class="example-card" *ngFor="let product of products" style="margin-top:10px">
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title class="card-titles">{{product.name}}</mat-card-title>
+                <mat-card-subtitle class="card-subtitles">{{product.price}}</mat-card-subtitle>
+              </mat-card-header>
+              <img mat-card-image class="card-imageUrl" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+              <mat-card-content class="card-description">
+                <p> {{product.type}} </p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button (click)="onSelectProductClick()" >View More Details</button>
+                <button mat-button (click)="onAddtoCartClick()" >Add to Cart</button>
+              </mat-card-actions>
+            </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
   </div>
+     
 
-
-
-
-</form>>
+  

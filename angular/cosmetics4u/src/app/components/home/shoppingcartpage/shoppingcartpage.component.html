@@ -1,0 +1,69 @@
+<mat-toolbar color="primary">
+  <a class="filler" color="primary" routerLink="" routerLinkActive="active">Login</a>
+  <a class="gap" color="primary" routerLink="/signup" routerLinkActive="active">Sign Up</a>
+  <a class= "filler" color="primary" routerLink="/uploadpage" routerLinkActive="active">Admin Upload Page</a>
+  <a class="filler" color="primary" routerLink="/homepage" routerLinkActive="active">Home Page</a>
+  <a class="filler" color="primary" routerLink="/shoppingcartpage" routerLinkActive="active">Shopping Cart Page</a>
+</mat-toolbar>
+
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <!-- Shopping Cart List -->
+
+
+
+
+
+
+
+
+    <!-- Contact Details Step One -->
+    <mat-step [stepControl]="contactDetailFormGroup" required>
+      <form [formGroup]="contactDetailFormGroup">
+        <ng-template matStepLabel ><b>Content Details</b></ng-template>
+        <button mat-button matStepperNext>Next</button>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="Full Name" formControlName="fullnameControl" required>
+          </mat-form-field>
+        </div>
+      </form>
+      
+    </mat-step>
+    <!-- Address Details Step Two -->
+  
+    <mat-step stepControl="addressDetailFormGroup" required>
+      <form [formGroup]="addressDetailFormGroup">
+          <ng-template matStepLabel><b>Address Details</b></ng-template>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext [disabled]="!addressDetailFormGroup.valid">Next</button>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="Full Address" formControlName="addressControl" required>
+            </mat-form-field>
+          </div>
+      </form>
+    </mat-step>
+  
+    <!-- Payment Details Step Three -->
+    <mat-step stepControl="paymentDetailFormGroup" required>
+      <form [formGroup]="paymentDetailFormGroup">
+        <ng-template matStepLabel><b>Payment Details</b></ng-template>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button>Reset Button</button>
+
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="Full Name as in Bank Card" formControlName="paymentNameControl" required>
+          </mat-form-field>
+        </div>
+        <button mat-button (clicked)="onPaymentCompleteClicked()" [disabled]="!paymentDetailFormGroup.valid">Complete Payment</button>
+      </form>
+    </mat-step>
+  
+    
+  </mat-horizontal-stepper>
+
+
+
+
+

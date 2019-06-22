@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const apiHost = '192.168.1.111';
+const apiHost = 'localhost';
 const apiPort = '8000';
 const apiBaseUrl = 'http://' + apiHost + ':' + apiPort + '/v1/cosmetics4u/api';
 
